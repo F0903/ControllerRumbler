@@ -48,7 +48,7 @@ private:
 
 public:
 	Controller* GetConnectedController() noexcept {
-		PRINTL("Waiting for controller...");
+		PRINTL("Getting connected controller...");
 		std::unique_lock<std::mutex> lock(controllerWaiterMutex);
 		controllerWaiter.wait(lock, [this]{ return selectedController != nullptr; });
 		return selectedController.get();
